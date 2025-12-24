@@ -13,4 +13,4 @@ then change it to:
 <Image src="./vercel.svg" alt="Vercel logomark" />
 ```
 
-The favicon is still not displaying, though.
+I also added a . at the start of the path to the favicon. All images and the favicon now display.

@@ -26,16 +26,15 @@ export default function GameComp() {
 
     if (isIOS) {
       setIosFullScreenRequested(true);
-      setShowPlayButton(false);
     }
     else {
 
       if (theElement.requestFullscreen) {
         theElement.requestFullscreen();
-        setShowPlayButton(false);
       }
-
     }
+    setShowPlayButton(false);
+    setShowPauseButton(true);
 
   }
 

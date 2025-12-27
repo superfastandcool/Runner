@@ -26,6 +26,7 @@ export default function GameComp() {
 
     if (isIOS) {
       setIosFullScreenRequested(true);
+      setShowPlayButton(false);
     }
     else {
 

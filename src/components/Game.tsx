@@ -7,7 +7,7 @@ export default function GameComp() {
 
   const [showPlayButton, setShowPlayButton] = useState<boolean>(true);
   const [showPauseButton, setShowPauseButton] = useState<boolean>(false);
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const isIOS: boolean | null = /iPhone|iPad|iPod/i.test(navigator.userAgent);
   const [iosFullScreenRequested, setIosFullScreenRequested] = useState<boolean>(false);
 
   const divRef = useRef<HTMLDivElement>(null);

@@ -1,14 +1,20 @@
 import styles from "@/styles/Home.module.css";
 import { Button } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 export default function GameComp() {
 
   const [showPlayButton, setShowPlayButton] = useState<boolean>(true);
   const [showPauseButton, setShowPauseButton] = useState<boolean>(false);
-  const isIOS: boolean | null = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const [isIOS, setIsIOS] = useState(false);
+  
   const [iosFullScreenRequested, setIosFullScreenRequested] = useState<boolean>(false);
+
+  // From ai: useEffect prevents a SSR error as useEffect never runs in SSR.
+  useEffect(() => {
+    const ua = navigator.userAgent; setIsIOS(/iPhone|iPad|iPod/i.test(ua));
+  }, []);
 
   const divRef = useRef<HTMLDivElement>(null);
 

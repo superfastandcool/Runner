@@ -8,14 +8,30 @@ export default function GameComp() {
   const [showPlayButton, setShowPlayButton] = useState<boolean>(true);
 
 
+  const divRef = useRef<HTMLDivElement>(null);
+
   const handlePlayClick = () => {
-    if (divRef.current) {
-      divRef.current.requestFullscreen();
-      setShowPlayButton(false);
+    const theElement = divRef.current as any;
+
+    if (theElement) {
+
+      if (theElement.requestFullscreen) {
+        theElement.requestFullscreen();
+        setShowPlayButton(false);
+      }
+      else if (theElement.webkitRequestFullscreen) {
+        theElement.webkitRequestFullscreen();
+        setShowPlayButton(false);
+      }
+      else if (theElement.msRequestFullscreen) {
+        theElement.msRequestFullscreen();
+        setShowPlayButton(false);
+      }
+      
     }
   }
 
-  const divRef = useRef<HTMLDivElement>(null);
+  
 
 
 

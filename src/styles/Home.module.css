@@ -78,14 +78,24 @@ parents centre.*/
   transform: translate(-50%, -50%);
 }
 
+.pausebutton {
+  position: absolute;
+
+  bottom: 0;
+  right: 0;
+  transform: translate(-100%, -100%);
+}
+
 
 .gamecompiosfull {
   position: fixed;
   top: 0;
   left: 0;
-  width: 90vw;
-  height: 90vh;
+  width: 100vw;
+  height: 100vh;
   z-index: 1000;
+
+  background-color: yellow;
 
   border: 5px solid red;
 }

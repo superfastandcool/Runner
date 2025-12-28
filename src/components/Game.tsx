@@ -1,6 +1,8 @@
 import styles from "@/styles/Home.module.css";
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
+import GameLogic from "@/components/GameLogic";
+
 
 
 export default function GameComp() {
@@ -37,8 +39,13 @@ export default function GameComp() {
 
       {/* The fullscreen functionality is based on AI. */}
       {showPlayButton && <Button className={styles.playbutton} onClick={handlePlayClick}>Play</Button>}
-      {showPauseButton && <Button className={styles.pausebutton} onClick={handlePauseClick}>Pause</Button>}
+      
 
+      <div className={styles.bottomright}>
+        {showPauseButton && <Button className={styles.pausebutton} onClick={handlePauseClick}>Pause</Button>}
+      </div>
+
+      <GameLogic></GameLogic>
 
     </div>
   );

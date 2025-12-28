@@ -79,16 +79,7 @@ parents centre.*/
 }
 
 .pausebutton {
-  position: absolute;
-
-  top: 100%;
-  left: 100%;
-  transform: translate(-100%, -100%);
-
-  z-index: 20;
-
   border: 5px solid blue;
-
 }
 
 
@@ -103,4 +94,20 @@ parents centre.*/
   background-color: yellow;
 
   border: 5px solid red;
+}
+
+
+.gameinnerdiv {
+  width: 100%;
+  height: 100%;
+
+  border: 7px solid blue;
+
+}
+
+.bottomright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border: 3px solid #73AD21;
 }

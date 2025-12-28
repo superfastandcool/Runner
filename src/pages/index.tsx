@@ -6,8 +6,8 @@ import GameComp from "@/components/Game";
 
 
 // Comment out Runner base path for production and uncomment the other one.
-// const theBasePath = "/Runner";
-const theBasePath = ".";
+const theBasePath = "/Runner";
+// const theBasePath = ".";
 
 export default function Home() {
   return (

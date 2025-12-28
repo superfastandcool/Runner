@@ -43,12 +43,26 @@ export default function GameComp() {
 
 
   return (
-    <div className={iosFullScreenRequested ? styles.gamecompiosfull : styles.gamecomp} ref={divRef}>
+    <>
+    {isIOS ?
+    <video>
+      <div className={styles.video}>
 
-      {/* The fullscreen functionality is based on AI. */}
-      {showPlayButton && <Button className={styles.playbutton} onClick={handlePlayClick}>Play</Button>}
-      {showPauseButton && <Button className={styles.pausebutton} onClick={handlePlayClick}>Pause</Button>}
+        {/* The fullscreen functionality is based on AI. */}
+        {showPlayButton && <Button className={styles.playbutton} onClick={handlePlayClick}>Play</Button>}
+        {showPauseButton && <Button className={styles.pausebutton} onClick={handlePlayClick}>Pause</Button>}
 
-    </div>
+      </div>
+    </video>
+    :
+      <div className={styles.gamecomp} ref={divRef}>
+
+        {/* The fullscreen functionality is based on AI. */}
+        {showPlayButton && <Button className={styles.playbutton} onClick={handlePlayClick}>Play</Button>}
+        {showPauseButton && <Button className={styles.pausebutton} onClick={handlePlayClick}>Pause</Button>}
+
+      </div>
+    }
+    </>
   );
 }

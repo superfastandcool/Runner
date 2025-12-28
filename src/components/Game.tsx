@@ -1,41 +1,31 @@
 import styles from "@/styles/Home.module.css";
 import { Button } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 
 export default function GameComp() {
 
   const [showPlayButton, setShowPlayButton] = useState<boolean>(true);
   const [showPauseButton, setShowPauseButton] = useState<boolean>(false);
-  const [isIOS, setIsIOS] = useState(false);
   
-  const [iosFullScreenRequested, setIosFullScreenRequested] = useState<boolean>(false);
+  const [fullscreenRequested, setFullscreenRequested] = useState<boolean>(false);
 
-  // From ai: useEffect prevents a SSR error as useEffect never runs in SSR.
-  useEffect(() => {
-    const ua = navigator.userAgent; setIsIOS(/iPhone|iPad|iPod/i.test(ua));
-  }, []);
 
-  const divRef = useRef<HTMLDivElement>(null);
 
   const handlePlayClick = () => {
-    
-    const theElement = divRef.current as any;
-    
 
+    setFullscreenRequested(true);
 
-    if (isIOS) {
-      setIosFullScreenRequested(true);
-    }
-    else {
-
-      if (theElement.requestFullscreen) {
-        theElement.requestFullscreen();
-      }
-    }
     setShowPlayButton(false);
     setShowPauseButton(true);
 
+  }
+
+  const handlePauseClick = () => {
+    setFullscreenRequested(false);
+
+    setShowPlayButton(true);
+    setShowPauseButton(false);
   }
 
   
@@ -43,11 +33,12 @@ export default function GameComp() {
 
 
   return (
-    <div className={iosFullScreenRequested ? styles.gamecompiosfull : styles.gamecomp} ref={divRef}>
+    <div className={fullscreenRequested ? styles.gamecompfull : styles.gamecomp}>
 
       {/* The fullscreen functionality is based on AI. */}
       {showPlayButton && <Button className={styles.playbutton} onClick={handlePlayClick}>Play</Button>}
-      {showPauseButton && <Button className={styles.pausebutton} onClick={handlePlayClick}>Pause</Button>}
+      {showPauseButton && <Button className={styles.pausebutton} onClick={handlePauseClick}>Pause</Button>}
+
 
     </div>
   );

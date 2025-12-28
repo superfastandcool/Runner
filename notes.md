@@ -14,3 +14,7 @@ then change it to:
 ```
 
 I also added a . at the start of the path to the favicon. All images and the favicon now display.
+
+
+This document helped a lot for positioning the pause and play buttons:
+https://www.w3schools.com/css/css_positioning.asp

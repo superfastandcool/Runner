@@ -81,11 +81,14 @@ parents centre.*/
 .pausebutton {
   position: absolute;
 
-  bottom: 0;
-  right: 0;
+  top: 100%;
+  left: 100%;
   transform: translate(-100%, -100%);
 
-  z-index: 1001;
+  z-index: 20;
+
+  border: 5px solid blue;
+
 }
 
 
@@ -95,7 +98,7 @@ parents centre.*/
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 10;
 
   background-color: yellow;
 

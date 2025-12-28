@@ -21,6 +21,13 @@ export default function GameComp() {
 
   }
 
+  const handlePauseClick = () => {
+    setFullscreenRequested(false);
+
+    setShowPlayButton(true);
+    setShowPauseButton(false);
+  }
+
   
 
 
@@ -30,7 +37,8 @@ export default function GameComp() {
 
       {/* The fullscreen functionality is based on AI. */}
       {showPlayButton && <Button className={styles.playbutton} onClick={handlePlayClick}>Play</Button>}
-      {showPauseButton && <Button className={styles.pausebutton} onClick={handlePlayClick}>Pause</Button>}
+      {showPauseButton && <Button className={styles.pausebutton} onClick={handlePauseClick}>Pause</Button>}
+
 
     </div>
   );

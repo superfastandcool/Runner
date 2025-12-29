@@ -8,18 +8,32 @@ const theBasePath = "/Runner";
 
 export default function GameLogic() {
 
-    // This delay rendering technique is from ai.
-    const [show, setShow] = useState(false);
+  let xpos = 15;
+  let ypos = 0;
 
-    useEffect(() => {
-        const t = setTimeout(() => setShow(true), 1000); // delay 1s
-        return () => clearTimeout(t);
-    }, []);
+  // This delay rendering technique is from ai.
+  const [show, setShow] = useState(false);
+  const [xposState, setXPosState] = useState(xpos);
+  const [yposState, setYPosState] = useState(ypos);
+
+  
+
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      xpos = xpos + 1;
+      ypos = ypos + 1;
+
+      setXPosState(xpos);
+      setYPosState(ypos);
+    }, 1000);
+
+    return () => clearInterval(id); // cleanup
+  }, []);
 
 
   return (
     <>
-    {show ? (
     <div className={styles.gameinnerdiv}>
         
         <Image  
@@ -29,17 +43,16 @@ export default function GameLogic() {
         width={150}
         height={190}></Image>
 
+        <pre>{yposState +"%"}</pre>
+
         <Image  
         className={styles.bubble2}
         src={theBasePath + "/globe.svg"}
         alt="bubble"
         width={150}
-        height={190}></Image>
+        height={190}
+        style={{  top: yposState +"%", left: "45%"}}></Image>
     </div>
-    ) : (
-    <div className={styles.gameinnerdiv}>
-    </div>
-    )}
     </>
   );
 }

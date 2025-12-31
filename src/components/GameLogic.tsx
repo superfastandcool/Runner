@@ -8,50 +8,77 @@ const theBasePath = "/Runner";
 
 export default function GameLogic() {
 
-  let xpos = 15;
-  let ypos = 0;
-
-  // This delay rendering technique is from ai.
-  const [show, setShow] = useState(false);
-  const [xposState, setXPosState] = useState(xpos);
-  const [yposState, setYPosState] = useState(ypos);
-
+  const [refresh, setRefresh] = useState(1);
+  const [bubblesHTML, setBubblesHTML] = useState<any>(<p>loading</p>)
   
+  const bubblesArray = [
+    {id: 1, display: true, xposition: 0, yposition: 10},
+    {id: 2, display: true, xposition: 0, yposition: 0},
+    {id: 3, display: true, xposition: 0, yposition: 0},
+    {id: 4, display: false, xposition: 0, yposition: 0},
+    {id: 5, display: false, xposition: 0, yposition: 0},
+    {id: 6, display: false, xposition: 0, yposition: 0},
+    {id: 7, display: false, xposition: 0, yposition: 0},
+    {id: 8, display: false, xposition: 0, yposition: 0},
+    {id: 9, display: false, xposition: 0, yposition: 0},
+    {id: 10, display: false, xposition: 0, yposition: 0},
+    {id: 11, display: false, xposition: 0, yposition: 0},
+    {id: 12, display: false, xposition: 0, yposition: 0},
+    {id: 13, display: false, xposition: 0, yposition: 0},
+    {id: 14, display: false, xposition: 0, yposition: 0},
+    {id: 15, display: false, xposition: 0, yposition: 0},
+    {id: 16, display: false, xposition: 0, yposition: 0},
+    {id: 17, display: false, xposition: 0, yposition: 0},
+    {id: 18, display: false, xposition: 0, yposition: 0},
+    {id: 19, display: false, xposition: 0, yposition: 0},
+    {id: 20, display: false, xposition: 0, yposition: 0},
+  ]
 
 
+
+  // This useEffect is for movement of the bubbles down the screen.
   useEffect(() => {
     const id = setInterval(() => {
-      xpos = xpos + 1;
-      ypos = ypos + 1;
+      // Check if pause is true.
+      // If not:
+      // For bubble in list, if display is true, then increment y position.
 
-      setXPosState(xpos);
-      setYPosState(ypos);
+      for (let i = 0; i < bubblesArray.length; i++) {
+        if (bubblesArray[i].display == true) {
+          bubblesArray[i].yposition = bubblesArray[i].yposition + 1;
+        }
+      }
+
+
+    setBubblesHTML(bubblesArray.map(bubble => 
+      <Image
+      key={bubble.id}
+      className={styles.bubble2}
+      src={theBasePath + "/globe.svg"}
+      alt="" width={150}
+      height={190}
+      style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: "45%"}}>
+
+      </Image>
+    ));
+
+
+      // Make a change to state so that the component re renders.
+      setRefresh(refresh + 1);
     }, 1000);
 
     return () => clearInterval(id); // cleanup
   }, []);
 
 
+
+
+
+
   return (
     <>
     <div className={styles.gameinnerdiv}>
-        
-        <Image  
-        className={styles.bubble1}
-        src={theBasePath + "/globe.svg"}
-        alt="bubble"
-        width={150}
-        height={190}></Image>
-
-        <pre>{yposState +"%"}</pre>
-
-        <Image  
-        className={styles.bubble2}
-        src={theBasePath + "/globe.svg"}
-        alt="bubble"
-        width={150}
-        height={190}
-        style={{  top: yposState +"%", left: "45%"}}></Image>
+        {bubblesHTML}
     </div>
     </>
   );

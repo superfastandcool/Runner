@@ -36,8 +36,9 @@ export default function GameLogic() {
 
 
 
+  // This useEffect adds new bubbles every three seconds.
   useEffect(() => {
-    // Add new bubbles every three seconds.
+    
     const id = setInterval(() => {
       // Check if pause is true.
       // If not:
@@ -47,7 +48,6 @@ export default function GameLogic() {
 
       let i = 0;
       let foundFalse = false;
-      console.log("The length of array is " + bubblesArray.length);
       while ((i < bubblesArray.length) && (!foundFalse)) {
         
 
@@ -77,6 +77,11 @@ export default function GameLogic() {
       for (let i = 0; i < bubblesArray.length; i++) {
         if (bubblesArray[i].display == true) {
           bubblesArray[i].yposition = bubblesArray[i].yposition + 1;
+
+          if (bubblesArray[i].yposition > 45) {
+            bubblesArray[i].display = false;
+            bubblesArray[i].yposition = 0;
+          }
         }
       }
 

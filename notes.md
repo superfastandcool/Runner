@@ -18,3 +18,11 @@ I also added a . at the start of the path to the favicon. All images and the fav
 
 This document helped a lot for positioning the pause and play buttons:
 https://www.w3schools.com/css/css_positioning.asp
+
+
+The two links explained how to add CSS inline in react. It also mentioned the precedence of inline CSS and external CSS.
+https://www.w3schools.com/css/css_howto.asp
+https://www.w3schools.com/react/react_css.asp
+
+This link explained what happens when a number and a string are "combined" with the + operator. (The number and string are concatenated.)
+https://www.w3schools.com/js/js_numbers.asp

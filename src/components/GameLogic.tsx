@@ -12,12 +12,12 @@ export default function GameLogic() {
   const [bubblesHTML, setBubblesHTML] = useState<any>(<p>loading</p>)
   
   const bubblesArray = [
-    {id: 1, display: true, xposition: 0, yposition: 10},
-    {id: 2, display: true, xposition: 0, yposition: 0},
-    {id: 3, display: true, xposition: 0, yposition: 0},
-    {id: 4, display: false, xposition: 0, yposition: 0},
-    {id: 5, display: false, xposition: 0, yposition: 0},
-    {id: 6, display: false, xposition: 0, yposition: 0},
+    {id: 1, display: true, xposition: 15, yposition: 0},
+    {id: 2, display: true, xposition: 25, yposition: 0},
+    {id: 3, display: true, xposition: 80, yposition: 0},
+    {id: 4, display: false, xposition: 75, yposition: 0},
+    {id: 5, display: false, xposition: 90, yposition: 0},
+    {id: 6, display: false, xposition: 55, yposition: 0},
     {id: 7, display: false, xposition: 0, yposition: 0},
     {id: 8, display: false, xposition: 0, yposition: 0},
     {id: 9, display: false, xposition: 0, yposition: 0},
@@ -33,6 +33,37 @@ export default function GameLogic() {
     {id: 19, display: false, xposition: 0, yposition: 0},
     {id: 20, display: false, xposition: 0, yposition: 0},
   ]
+
+
+
+  useEffect(() => {
+    // Add new bubbles every three seconds.
+    const id = setInterval(() => {
+      // Check if pause is true.
+      // If not:
+      // Find first bubble in list with display: false and set to true.
+      // (If no bubbles with display: false do nothing.)
+
+
+      let i = 0;
+      let foundFalse = false;
+      console.log("The length of array is " + bubblesArray.length);
+      while ((i < bubblesArray.length) && (!foundFalse)) {
+        
+
+        if (bubblesArray[i].display == false) {
+          bubblesArray[i].display = true;
+          foundFalse = true;
+        }
+
+        i++;
+      }
+
+      
+    }, 3000);
+
+    return () => clearInterval(id);
+  }, []);
 
 
 
@@ -57,7 +88,7 @@ export default function GameLogic() {
       src={theBasePath + "/globe.svg"}
       alt="" width={150}
       height={190}
-      style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: "45%"}}>
+      style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: bubble.xposition +"%"}}>
 
       </Image>
     ));

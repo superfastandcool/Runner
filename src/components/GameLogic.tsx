@@ -93,19 +93,19 @@ export default function GameLogic() {
       }
 
 
-    setBubblesHTML(bubblesArray.map(bubble => 
-      <Image
-      key={bubble.id}
-      id={"bubble " + bubble.id}
-      className={styles.bubble2}
-      src={theBasePath + "/globe.svg"}
-      alt="" width={150}
-      height={190}
-      style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: bubble.xposition +"%"}}
-      onClick={() => {handlePopClick(bubble.id);}}>
+      setBubblesHTML(bubblesArray.map(bubble => 
+        <Image
+        key={bubble.id}
+        id={"bubble " + bubble.id}
+        className={styles.bubble}
+        src={theBasePath + "/globe.svg"}
+        alt="" width={150}
+        height={190}
+        style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: bubble.xposition +"%"}}
+        onClick={() => {handlePopClick(bubble.id);}}>
 
-      </Image>
-    ));
+        </Image>
+      ));
 
 
       // Make a change to state so that the component re renders.

@@ -112,15 +112,7 @@ parents centre.*/
   border: 3px solid #73AD21;
 }
 
-.bubble1 {
-  border: 3px solid #73AD21;
-
-  position: absolute;
-  top: 25%;
-  left: 45%;
-}
-
-.bubble2 {
+.bubble {
   border: 3px solid #73AD21;
 
   position: absolute;

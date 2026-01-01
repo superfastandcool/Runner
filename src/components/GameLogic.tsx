@@ -35,9 +35,17 @@ export default function GameLogic() {
   ]
 
 
+  const handlePopClick = (bubbleID: number) => {
+    bubblesArray[bubbleID - 1].display = false;
+    bubblesArray[bubbleID - 1].yposition = 0;
+    document.getElementById("bubble " + bubbleID)!.style.display = "none";
+  }
 
+
+
+  // This useEffect adds new bubbles every three seconds.
   useEffect(() => {
-    // Add new bubbles every three seconds.
+    
     const id = setInterval(() => {
       // Check if pause is true.
       // If not:
@@ -47,7 +55,6 @@ export default function GameLogic() {
 
       let i = 0;
       let foundFalse = false;
-      console.log("The length of array is " + bubblesArray.length);
       while ((i < bubblesArray.length) && (!foundFalse)) {
         
 
@@ -77,6 +84,11 @@ export default function GameLogic() {
       for (let i = 0; i < bubblesArray.length; i++) {
         if (bubblesArray[i].display == true) {
           bubblesArray[i].yposition = bubblesArray[i].yposition + 1;
+
+          if (bubblesArray[i].yposition > 45) {
+            bubblesArray[i].display = false;
+            bubblesArray[i].yposition = 0;
+          }
         }
       }
 
@@ -84,11 +96,13 @@ export default function GameLogic() {
     setBubblesHTML(bubblesArray.map(bubble => 
       <Image
       key={bubble.id}
+      id={"bubble " + bubble.id}
       className={styles.bubble2}
       src={theBasePath + "/globe.svg"}
       alt="" width={150}
       height={190}
-      style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: bubble.xposition +"%"}}>
+      style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: bubble.xposition +"%"}}
+      onClick={() => {handlePopClick(bubble.id);}}>
 
       </Image>
     ));

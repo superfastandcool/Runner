@@ -35,6 +35,13 @@ export default function GameLogic() {
   ]
 
 
+  const handlePopClick = (bubbleID: number) => {
+    bubblesArray[bubbleID - 1].display = false;
+    bubblesArray[bubbleID - 1].yposition = 0;
+    document.getElementById("bubble " + bubbleID)!.style.display = "none";
+  }
+
+
 
   // This useEffect adds new bubbles every three seconds.
   useEffect(() => {
@@ -89,11 +96,13 @@ export default function GameLogic() {
     setBubblesHTML(bubblesArray.map(bubble => 
       <Image
       key={bubble.id}
+      id={"bubble " + bubble.id}
       className={styles.bubble2}
       src={theBasePath + "/globe.svg"}
       alt="" width={150}
       height={190}
-      style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: bubble.xposition +"%"}}>
+      style={{ display: bubble.display ? "inline" : "none",  top: bubble.yposition +"%", left: bubble.xposition +"%"}}
+      onClick={() => {handlePopClick(bubble.id);}}>
 
       </Image>
     ));
